@@ -1,0 +1,1023 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.8.1" last-position="175,0" last-zoom="0.4"
+	 default-schema="public" default-owner="postgres">
+<role name="tecnics"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="vialitat"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="xtorret"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="my_name"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="geoserver"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="super_vialitat"
+      superuser="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<role name="vialitat_test"
+      inherit="true"
+      login="true"
+      encrypted="true"
+      password="********">
+</role>
+
+<database name="giswater_20" encoding="UTF8" lc-collate="Spanish_Spain" lc-ctype="Spanish_Spain">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" protected="true" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="sc_ws" rect-visible="true" fill-color="#83af1f">
+	<role name="postgres"/>
+</schema>
+
+<table name="arc">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="2085" y="352.5"/>
+	<column name="arc_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="node_1">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="node_2">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="arccat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="enet_type">
+		<type name="character varying" length="18"/>
+	</column>
+	<column name="sector_id">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="dma_id">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="the_geom">
+		<type name="geometry"/>
+	</column>
+	<column name="arc_type">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="link">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="state">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="annotation">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="observ">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="event">
+		<type name="character varying" length="30"/>
+	</column>
+	<constraint name="arc_pkey" type="pk-constr" table="sc_ws.arc">
+		<columns names="arc_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cat_arc">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="1693.17" y="46.6667"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="enet_type">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="arc_type">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="matcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="pn_atm">
+		<type name="smallint"/>
+	</column>
+	<column name="dint">
+		<type name="numeric" length="12" precision="5"/>
+	</column>
+	<column name="dext">
+		<type name="numeric" length="12" precision="5"/>
+	</column>
+	<column name="short_des">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="255"/>
+	</column>
+	<constraint name="cat_arc_pkey" type="pk-constr" table="sc_ws.cat_arc">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cat_mat">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="1282" y="35"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="roughness">
+		<type name="numeric" length="12" precision="4"/>
+	</column>
+	<constraint name="cat_mat_pkey" type="pk-constr" table="sc_ws.cat_mat">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="node">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="2782.5" y="350"/>
+	<column name="node_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="elevation">
+		<type name="numeric" length="12" precision="4"/>
+	</column>
+	<column name="depth">
+		<type name="numeric" length="12" precision="4"/>
+	</column>
+	<column name="enet_type">
+		<type name="character varying" length="18"/>
+	</column>
+	<column name="sector_id">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="dma_id">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="the_geom">
+		<type name="geometry"/>
+	</column>
+	<column name="node_type">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="link">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="state">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="annotation">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="observ">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="event">
+		<type name="character varying" length="30"/>
+	</column>
+	<constraint name="node_pkey" type="pk-constr" table="sc_ws.node">
+		<columns names="node_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="sector">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="2439" y="879.4"/>
+	<column name="sector_id" not-null="true">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="the_geom">
+		<type name="geometry"/>
+	</column>
+	<constraint name="sector_pkey" type="pk-constr" table="sc_ws.sector">
+		<columns names="sector_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cat_node">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="3144.5" y="42.7333"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="node_type">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="epanet_type">
+		<type name="character varying" length="18"/>
+	</column>
+	<column name="geom1">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<column name="geom2">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<column name="geom3">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<column name="value">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<column name="short_des">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="255"/>
+	</column>
+	<constraint name="cat_node_pkey" type="pk-constr" table="sc_ws.cat_node">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="node_dat">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="2773.5" y="34.4"/>
+	<column name="node_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="soilcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="pavcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="owner">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="manager">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="builtdate">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="constructor">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="work_id">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="fluid">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="category">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="node_func">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="position">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="real_depth">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<column name="value">
+		<type name="integer"/>
+	</column>
+	<column name="comment">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="text">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="temp">
+		<type name="character varying" length="30"/>
+	</column>
+	<constraint name="node_dat_pkey" type="pk-constr" table="sc_ws.node_dat">
+		<columns names="node_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="arc_dat">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="2070" y="34.4"/>
+	<column name="arc_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="soilcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="pavcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="owner">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="manager">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="builtdate">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="constructor">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="work_id">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="fluid">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="category">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="arc_func">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="position">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="real_length">
+		<type name="numeric" length="12" precision="2"/>
+	</column>
+	<column name="value">
+		<type name="integer"/>
+	</column>
+	<column name="comment">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="text">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="temp">
+		<type name="character varying" length="30"/>
+	</column>
+	<constraint name="arc_dat_pkey" type="pk-constr" table="sc_ws.arc_dat">
+		<columns names="arc_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cat_event">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="257.5" y="95.1571"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="type">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="comment">
+		<type name="character varying" length="512"/>
+	</column>
+	<constraint name="cat_event_pkey" type="pk-constr" table="sc_ws.cat_event">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="event">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="869" y="137.3"/>
+	<column name="id" not-null="true" default-value="nextval('sc_ws.event_id_seq'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="date" default-value="now()">
+		<type name="timestamp" precision="6"/>
+	</column>
+	<column name="user">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="eventcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="comment">
+		<type name="character varying" length="512"/>
+	</column>
+	<constraint name="event_pkey" type="pk-constr" table="sc_ws.event">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="event_x_file">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="894.786" y="385.514"/>
+	<column name="id" not-null="true" default-value="nextval('sc_ws.event_x_file_seq'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="event_id">
+		<type name="bigint"/>
+	</column>
+	<column name="path">
+		<type name="character varying" length="512"/>
+	</column>
+	<constraint name="event_x_file_pkey" type="pk-constr" table="sc_ws.event_x_file">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="event_x_arc">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="515.714" y="273.014"/>
+	<column name="id" not-null="true" default-value="nextval('sc_ws.event_x_arc'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="event_id">
+		<type name="bigint"/>
+	</column>
+	<column name="arc_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<constraint name="event_x_arc_pkey" type="pk-constr" table="sc_ws.event_x_arc">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="event_x_node">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="1242.64" y="268.014"/>
+	<column name="id" not-null="true" default-value="nextval('sc_ws.event_x_node'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="event_id">
+		<type name="bigint"/>
+	</column>
+	<column name="node_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<constraint name="event_x_node_pkey" type="pk-constr" table="sc_ws.event_x_node">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cat_scada">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="235" y="620.7"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="data_type">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="units">
+		<type name="character varying" length="12"/>
+	</column>
+	<column name="text1">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="text2">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="text3">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="cat_scada_pkey" type="pk-constr" table="sc_ws.cat_scada">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rtc_scada_arc">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="673.595" y="682.049"/>
+	<column name="scada_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="scdcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="arc_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<constraint name="rtc_scada_arc_pkey" type="pk-constr" table="sc_ws.rtc_scada_arc">
+		<columns names="scada_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rtc_scada_node">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="672.214" y="568.557"/>
+	<column name="scada_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="scdcat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="node_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<constraint name="rtc_scada_node_pkey" type="pk-constr" table="sc_ws.rtc_scada_node">
+		<columns names="scada_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rtc_scada_x_value">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="677.341" y="797.605"/>
+	<column name="id" not-null="true" default-value="nextval('sc_ws.rtc_scada_x_value_seq'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="scada_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="value">
+		<type name="numeric" length="12" precision="6"/>
+	</column>
+	<column name="date">
+		<type name="timestamp" precision="6"/>
+	</column>
+	<constraint name="rtc_scada_x_value_pkey" type="pk-constr" table="sc_ws.rtc_scada_x_value">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="connec">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="1505.5" y="1055.7"/>
+	<column name="connec_id" not-null="true" default-value="nextval('sc_ws.connec_seq'::regclass)">
+		<type name="character varying"/>
+	</column>
+	<column name="arccat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="arc_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="link">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="state">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="annotation">
+		<type name="character varying" length="512"/>
+	</column>
+	<column name="observ">
+		<type name="character varying" length="254"/>
+	</column>
+	<column name="event">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="the_geom">
+		<type name="geometry"/>
+	</column>
+	<constraint name="connec_pkey" type="pk-constr" table="sc_ws.connec">
+		<columns names="connec_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="link">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="72.5" y="975.1"/>
+	<column name="link_id" not-null="true" default-value="nextval('sc_ws.link_seq'::regclass)">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="connec_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="the_geom">
+		<type name="geometry"/>
+	</column>
+	<constraint name="link_pkey" type="pk-constr" table="sc_ws.link">
+		<columns names="link_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cat_hydrometer">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="398.5" y="975.1"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="text1">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="text2">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="text3">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="cat_hydrometer_pkey" type="pk-constr" table="sc_ws.cat_hydrometer">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rtc_hydrometer_x_connec">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="701.5" y="975.1"/>
+	<column name="hydrometer_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="connec_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="hydrocat_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<constraint name="rtc_hydrometer_x_connec_pkey" type="pk-constr" table="sc_ws.rtc_hydrometer_x_connec">
+		<columns names="hydrometer_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rtc_hydrometer_x_value">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="1063.5" y="975.1"/>
+	<column name="id" not-null="true" default-value="nextval('sc_ws.rtc_hydrometer_x_value_seq'::regclass)">
+		<type name="bigint"/>
+	</column>
+	<column name="hydrometer_id">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="value">
+		<type name="numeric" length="12" precision="6"/>
+	</column>
+	<column name="date">
+		<type name="timestamp" precision="6"/>
+	</column>
+	<constraint name="rtc_hydrometer_x_value_pkey" type="pk-constr" table="sc_ws.rtc_hydrometer_x_value">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="rtc_inp_demand">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="988.333" y="805.656"/>
+	<column name="node_id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="value">
+		<type name="numeric" length="12" precision="6"/>
+	</column>
+	<column name="text">
+		<type name="character varying" length="100"/>
+	</column>
+	<constraint name="rtc_demand_pkey" type="pk-constr" table="sc_ws.rtc_inp_demand">
+		<columns names="node_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="admin_list_user">
+	<schema name="sc_ws"/>
+	<role name="postgres"/>
+	<position x="148.929" y="223.429"/>
+	<column name="id" not-null="true">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="surname_1" not-null="true">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="surname_2" not-null="true">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="role" not-null="true">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="descript">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="email">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="comment">
+		<type name="character varying" length="512"/>
+	</column>
+</table>
+
+<constraint name="arc_arccat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_arc" table="sc_ws.arc">
+	<columns names="arccat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="arc_sector_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.sector" table="sc_ws.arc">
+	<columns names="sector_id" ref-type="src-columns"/>
+	<columns names="sector_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="arc_node_1_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="sc_ws.node" table="sc_ws.arc">
+	<columns names="node_1" ref-type="src-columns"/>
+	<columns names="node_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="arc_node_2_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="sc_ws.node" table="sc_ws.arc">
+	<columns names="node_2" ref-type="src-columns"/>
+	<columns names="node_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cat_arc_matcat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_mat" table="sc_ws.cat_arc">
+	<columns names="matcat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="node_sector_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.sector" table="sc_ws.node">
+	<columns names="sector_id" ref-type="src-columns"/>
+	<columns names="sector_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="node_node_type_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_node" table="sc_ws.node">
+	<columns names="node_type" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="node_dat_node_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="sc_ws.node" table="sc_ws.node_dat">
+	<columns names="node_id" ref-type="src-columns"/>
+	<columns names="node_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="arc_dat_arc_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="CASCADE" ref-table="sc_ws.arc" table="sc_ws.arc_dat">
+	<columns names="arc_id" ref-type="src-columns"/>
+	<columns names="arc_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_user_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.admin_list_user" table="sc_ws.event">
+	<columns names="user" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_eventcat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_event" table="sc_ws.event">
+	<columns names="eventcat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_x_file_event_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.event" table="sc_ws.event_x_file">
+	<columns names="event_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_x_arc_event_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.event" table="sc_ws.event_x_arc">
+	<columns names="event_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_x_arc_arc_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.arc" table="sc_ws.event_x_arc">
+	<columns names="arc_id" ref-type="src-columns"/>
+	<columns names="arc_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_x_node_event_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.event" table="sc_ws.event_x_node">
+	<columns names="event_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="event_x_node_node_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.node" table="sc_ws.event_x_node">
+	<columns names="node_id" ref-type="src-columns"/>
+	<columns names="node_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_scada_arc_scdcat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_scada" table="sc_ws.rtc_scada_arc">
+	<columns names="scdcat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_scada_arc_arc_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.arc" table="sc_ws.rtc_scada_arc">
+	<columns names="arc_id" ref-type="src-columns"/>
+	<columns names="arc_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_scada_node_scdcat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_scada" table="sc_ws.rtc_scada_node">
+	<columns names="scdcat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_scada_node_node_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.node" table="sc_ws.rtc_scada_node">
+	<columns names="node_id" ref-type="src-columns"/>
+	<columns names="node_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="connec_arccat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_arc" table="sc_ws.connec">
+	<columns names="arccat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_hydrometer_x_connec_connec_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.connec" table="sc_ws.rtc_hydrometer_x_connec">
+	<columns names="connec_id" ref-type="src-columns"/>
+	<columns names="connec_id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_hydrometer_x_connec_hydrocat_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.cat_hydrometer" table="sc_ws.rtc_hydrometer_x_connec">
+	<columns names="hydrocat_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="rtc_inp_demand_node_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="CASCADE" del-action="RESTRICT" ref-table="sc_ws.node" table="sc_ws.rtc_inp_demand">
+	<columns names="node_id" ref-type="src-columns"/>
+	<columns names="node_id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_arc_cat_arc" type="relfk"
+	 custom-color="#5aa578"
+	 src-table="sc_ws.arc"
+	 dst-table="sc_ws.cat_arc"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_arc_sector" type="relfk"
+	 custom-color="#4b3e56"
+	 src-table="sc_ws.arc"
+	 dst-table="sc_ws.sector"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_arc_node" type="relfk"
+	 custom-color="#9ac721"
+	 src-table="sc_ws.arc"
+	 dst-table="sc_ws.node"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cat_arc_cat_mat" type="relfk"
+	 custom-color="#249b49"
+	 src-table="sc_ws.cat_arc"
+	 dst-table="sc_ws.cat_mat"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_node_sector" type="relfk"
+	 custom-color="#942665"
+	 src-table="sc_ws.node"
+	 dst-table="sc_ws.sector"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_node_cat_node" type="relfk"
+	 custom-color="#abb258"
+	 src-table="sc_ws.node"
+	 dst-table="sc_ws.cat_node"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_node_dat_node" type="relfk"
+	 custom-color="#94e1e5"
+	 src-table="sc_ws.node_dat"
+	 dst-table="sc_ws.node"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_arc_dat_arc" type="relfk"
+	 custom-color="#a239f5"
+	 src-table="sc_ws.arc_dat"
+	 dst-table="sc_ws.arc"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_admin_list_user" type="relfk"
+	 custom-color="#4e132e"
+	 src-table="sc_ws.event"
+	 dst-table="sc_ws.admin_list_user"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_cat_event" type="relfk"
+	 custom-color="#081cb1"
+	 src-table="sc_ws.event"
+	 dst-table="sc_ws.cat_event"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_x_file_event" type="relfk"
+	 custom-color="#87ec86"
+	 src-table="sc_ws.event_x_file"
+	 dst-table="sc_ws.event"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_x_arc_event" type="relfk"
+	 custom-color="#63e1f3"
+	 src-table="sc_ws.event_x_arc"
+	 dst-table="sc_ws.event"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_x_arc_arc" type="relfk"
+	 custom-color="#e41bea"
+	 src-table="sc_ws.event_x_arc"
+	 dst-table="sc_ws.arc"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_x_node_event" type="relfk"
+	 custom-color="#36beed"
+	 src-table="sc_ws.event_x_node"
+	 dst-table="sc_ws.event"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_event_x_node_node" type="relfk"
+	 custom-color="#871fa4"
+	 src-table="sc_ws.event_x_node"
+	 dst-table="sc_ws.node"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_scada_arc_cat_scada" type="relfk"
+	 custom-color="#484368"
+	 src-table="sc_ws.rtc_scada_arc"
+	 dst-table="sc_ws.cat_scada"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_scada_arc_arc" type="relfk"
+	 custom-color="#ce5d86"
+	 src-table="sc_ws.rtc_scada_arc"
+	 dst-table="sc_ws.arc"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_scada_node_cat_scada" type="relfk"
+	 custom-color="#132c5f"
+	 src-table="sc_ws.rtc_scada_node"
+	 dst-table="sc_ws.cat_scada"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_scada_node_node" type="relfk"
+	 custom-color="#3aff7d"
+	 src-table="sc_ws.rtc_scada_node"
+	 dst-table="sc_ws.node"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_connec_cat_arc" type="relfk"
+	 custom-color="#5cce88"
+	 src-table="sc_ws.connec"
+	 dst-table="sc_ws.cat_arc"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_hydrometer_x_connec_connec" type="relfk"
+	 custom-color="#264253"
+	 src-table="sc_ws.rtc_hydrometer_x_connec"
+	 dst-table="sc_ws.connec"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_hydrometer_x_connec_cat_hydrometer" type="relfk"
+	 custom-color="#e55a24"
+	 src-table="sc_ws.rtc_hydrometer_x_connec"
+	 dst-table="sc_ws.cat_hydrometer"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_rtc_inp_demand_node" type="relfk"
+	 custom-color="#044d5b"
+	 src-table="sc_ws.rtc_inp_demand"
+	 dst-table="sc_ws.node"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
